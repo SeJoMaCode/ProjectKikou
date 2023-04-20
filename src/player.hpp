@@ -11,15 +11,14 @@ public:
   ~Player();
 
   void render(SDL_Renderer *renderer);
+  void renderFPV(SDL_Renderer *renderer, std::vector<Object *> &objs);
 
-  void attack();
   void useItem(int itemId);
+
+  void handleInput();
 
   int getHealth() const;
   void setHealth(int health);
-
-  int getSpeed() const;
-  void setSpeed(int speed);
 
   bool checkCollision(std::vector<Object *> &objs);
 
@@ -32,6 +31,7 @@ protected:
   int m_inventory[10]; // array to hold up to 10 items
   int m_velocity[2];
   float m_heading;
+  float m_fov;
 };
 
 #endif // PLAYER_HPP

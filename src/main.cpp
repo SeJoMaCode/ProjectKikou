@@ -5,8 +5,8 @@
 #include <vector>
 
 int main(int argc, char *argv[]) {
-  Window window("Project Kikou TD", 800, 600);
   Window windowFPV("Project Kikou FPV", 800, 600);
+  Window window("Project Kikou TD", 800, 600);
 
   SDL_Color red = {255, 0, 0, 255};
 
@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 
     while (accumulator >= updateInterval) {
       quit = window.pollEvents() || windowFPV.pollEvents();
+      player.handleInput();
       player.move(walls);
 
       accumulator -= updateInterval;
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]) {
 
     window.render(walls);
     window.render(player);
+    player.renderFPV(windowFPV.getRenderer(), walls);
 
     window.display();
     windowFPV.display();

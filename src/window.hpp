@@ -13,6 +13,8 @@ public:
 
   bool pollEvents();
 
+  SDL_Renderer *getRenderer() const;
+
   void clear();
   void render(Object &obj);
   void render(std::vector<Object *> &objs);
