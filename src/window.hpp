@@ -11,19 +11,16 @@ public:
   Window(const char *title, int width, int height);
   ~Window();
 
-  bool pollEvents(Player &player);
+  bool pollEvents();
 
-  void addRenderObject(Object &obj);
-  void addRenderObjects(std::vector<Object *> &objs);
-  void removeRenderObject(Object &obj);
-  void clearRenderObjects();
-
-  void render();
+  void clear();
+  void render(Object &obj);
+  void render(std::vector<Object *> &objs);
+  void display();
 
 protected:
   SDL_Window *m_window;
   SDL_Renderer *m_renderer;
-  std::vector<Object *> m_renderObjects;
 };
 
 #endif // WINDOW_HPP

@@ -3,6 +3,7 @@
 
 #include "object.hpp"
 #include <SDL2/SDL_render.h>
+#include <vector>
 
 class Player : public Object {
 public:
@@ -20,16 +21,16 @@ public:
   int getSpeed() const;
   void setSpeed(int speed);
 
-  void move();
-  void setForwardVelocity(int x);
-  void setLeftVelocity(int y);
+  bool checkCollision(std::vector<Object *> &objs);
+
+  void move(std::vector<Object *> &objs);
   void changeHeading(float a);
 
 protected:
   int m_health;
   int m_speed;
   int m_inventory[10]; // array to hold up to 10 items
-  int m_direction[2];
+  int m_velocity[2];
   float m_heading;
 };
 

@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_pixels.h>
+#include <SDL2/SDL_rect.h>
 
 class Object {
 public:
@@ -10,6 +11,8 @@ public:
   virtual ~Object();
 
   virtual void render(SDL_Renderer *renderer);
+
+  SDL_Rect *getRect();
 
 protected:
   SDL_Rect m_rect;
